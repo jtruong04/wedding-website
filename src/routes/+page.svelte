@@ -3,8 +3,9 @@
 	import Countdown from '$lib/components/Countdown.svelte';
 	import { DateTime } from 'luxon';
 
-	const date = '10/5/2024, 6:00 PM';
-	const tz = 'America/New_York';
+	const {data} = $props();
+	const {date, tz} = data;
+
 </script>
 
 <Hero img="photos/banner.jpg">
@@ -16,7 +17,7 @@
 			{DateTime.fromFormat(date, 'f', { zone: tz }).toFormat('EEEE, MMMM dd, t')}
 		</div>
 		<div class="text-white">
-			<Countdown {date} timezone={tz} show_seconds={true} />
+			<Countdown {date} timezone={tz} show_seconds={false} />
 		</div>
 	</div>
 </Hero>
