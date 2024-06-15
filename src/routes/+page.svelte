@@ -25,5 +25,14 @@
 <style>
 	h1 {
 		text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+		font-weight: 200 !important;
+		font-size: 6rem;
 	}
+
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 3rem;
+		}
+	}
+
 </style>
