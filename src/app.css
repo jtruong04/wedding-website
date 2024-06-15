@@ -76,3 +76,26 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+@font-face {
+	font-family: 'BrigithaValentine';
+	src: url('/fonts/BrigithaValentine-rg7DK.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'AstonScript';
+	src: url('/fonts/Aston Script.ttf') format('truetype');
+}
+@font-face {
+	font-family: 'adelia';
+	src: url('/fonts/adelia.ttf') format('truetype');
+}
+
+.script-font {
+	font-family: adelia;
+}
+
+h1 {
+	font-weight: 200 !important;
+	text-align: center;
+}

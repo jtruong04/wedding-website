@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import Hero from '$lib/components/Hero.svelte';
+</script>
+
+<Hero img="photos/banner.jpg">
+	<div class="flex flex-col items-center">
+		<h1 class="script-font text-shadow mb-[5rem] text-6xl font-bold text-white">
+	</div>
+</Hero>
+
+<style>
+	h1 {
+		text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+	}
+</style>
