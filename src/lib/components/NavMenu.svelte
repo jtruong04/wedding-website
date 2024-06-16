@@ -18,15 +18,15 @@
 <ul class={direction === 'horizontal' ? horizontalClasses : verticalClasses}>
 	{#each links as { name, href }}
 	<li>
-		<Button variant="ghost">
-			<a href={href} {onclick}>{name}</a>
+		<Button variant="ghost" {onclick} href={href}>
+			{name}
 		</Button>
 	</li>
 	{/each}
 
 	<li class:order-first={direction === 'vertical'}>
-		<Button >
-			<a href="/rsvp" {onclick}>RSVP</a>
+		<Button {onclick} href="/rsvp">
+			RSVP
 		</Button>
 	</li>
 </ul>
