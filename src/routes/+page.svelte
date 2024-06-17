@@ -4,11 +4,11 @@
 	import { DateTime } from 'luxon';
 
 	const {data} = $props();
-	const {date, tz} = data;
+	const {date, tz, banner} = data;
 
 </script>
 
-<Hero img="photos/banner.jpg">
+<Hero img={banner}>
 	<div class="flex flex-col items-center">
 		<h1 class="script-font text-shadow mb-[5rem] text-6xl font-bold text-white">
 			John and Jessica

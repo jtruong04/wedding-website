@@ -17,3 +17,8 @@ export type Guest = {
     guestId: string;
     notes: string;
 }
+
+export type FAQ = {
+    question: string;
+    answer: string;
+}

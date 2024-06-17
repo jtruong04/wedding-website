@@ -15,7 +15,7 @@
 		// { name: 'Gallery', href: '/gallery' },
 		// { name: 'Hotels', href: '/hotels' },
 		// { name: 'Registry', href: '/registry' },
-		// { name: 'FAQs', href: '/faq' }
+		{ name: 'FAQs', href: '/faqs' }
 	];
 </script>
 
