@@ -13,7 +13,16 @@
 		<h1 class="script-font text-shadow mb-[5rem] text-6xl font-bold text-white">
 			John and Jessica
 		</h1>
-		<div class="mb-2 text-xl">
+		<h2 class="text-2xl">
+			<a href="https://www.giancarlossteakhouse.com/">
+				<p>
+					Giancarlo's Cento Room <br/>
+					5110 Main Street <br/>
+					Williamsville NY, 14221
+				</p>
+			</a>
+		</h2>
+		<div class="mb-2 mt-5 text-xl">
 			{DateTime.fromFormat(date, 'f', { zone: tz }).toFormat('EEEE, MMMM dd, t')}
 		</div>
 		<div class="text-white">

@@ -60,3 +60,39 @@ export const flyAndScale = (
 		easing: cubicOut
 	};
 };
+
+export function camelize(str:string) {
+	return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+	  return index === 0 ? word.toLowerCase() : word.toUpperCase();
+	}).replace(/\s+/g, '').replace(/\W/g, '');
+  }
+  
+
+export function flattenObj(ob: { [x: string]: any; }) {
+ 
+    // The object which contains the
+    // final result
+    let result:{ [x: string]: any; } = {};
+ 
+    // loop through the object "ob"
+    for (const i in ob) {
+ 
+        // We check the type of the i using
+        // typeof() function and recursively
+        // call the function again
+        if ((typeof ob[i]) === 'object' && !Array.isArray(ob[i])) {
+            const temp = flattenObj(ob[i]);
+            for (const j in temp) {
+ 
+                // Store temp in result
+                result[i + '_' + j] = temp[j];
+            }
+        }
+ 
+        // Else store ob[i] in result directly
+        else {
+            result[i] = ob[i];
+        }
+    }
+    return result;
+};

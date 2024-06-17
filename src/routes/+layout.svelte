@@ -27,19 +27,19 @@
 <Drawer>
 	{#snippet content({ toggleDrawer })}
 		<div class="navbar w-full ps-5">
-			<div class="flex-none lg:hidden" class:text-white={$page.route.id === '/'}>
+			<div class="flex-none md:hidden" class:text-white={$page.route.id === '/'}>
 				<button onclick={toggleDrawer}>
 					<Menu />
 				</button>
 			</div>
 			{#if !($page.route.id === '/')}
-				<div class="script-font mx-2 flex-1 px-2 font-bold"><a href="/">John and Jessica</a></div>
+				<div class="script-font mx-2 flex-1 px-2"><a href="/">John and Jessica</a></div>
 			{/if}
-			<div class="ml-auto hidden lg:block" class:text-white={$page.route.id === '/'}>
+			<div class="ml-auto hidden md:block" class:text-white={$page.route.id === '/'}>
 				<NavMenu direction="horizontal" {links} />
 			</div>
 		</div>
-		<div class="prose mx-auto flex max-w-screen-lg flex-col items-center">
+		<div class="prose mx-auto flex max-w-screen-lg flex-col items-center p-5">
 			{@render children()}
 		</div>
 	{/snippet}

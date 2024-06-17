@@ -13,14 +13,15 @@ const jwt = new JWT({
 	scopes: SCOPES
 });
 
-// export const doc = new GoogleSpreadsheet(GOOGLE_SHEET_ID, jwt);
-
 export async function getSheet(title: string) {
     const doc = new GoogleSpreadsheet(GOOGLE_SHEET_ID, jwt);
     await doc.loadInfo();
     return doc.sheetsByTitle[title];
 }
 
-export function findRow<T extends Record<string, any>>(sheet: GoogleSpreadsheetWorksheet, key: keyof T, value: string) {
+export async function findRow<T extends Record<string, any>>(sheet: GoogleSpreadsheetWorksheet|string, key: keyof T, value: string) {
+	if (typeof sheet === 'string') {
+		sheet = await getSheet(sheet);
+	}
     return sheet.getRows<T>().then(rows => rows.find(r => r.get(key) === value));
 }
