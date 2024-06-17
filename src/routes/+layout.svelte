@@ -12,7 +12,7 @@
 	const { children } = $props();
 
 	const links: { name: string; href: string }[] = [
-		// { name: 'Gallery', href: '/gallery' },
+		{ name: 'Gallery', href: '/gallery' },
 		// { name: 'Hotels', href: '/hotels' },
 		// { name: 'Registry', href: '/registry' },
 		{ name: 'FAQs', href: '/faqs' }
@@ -20,7 +20,7 @@
 </script>
 
 <ModeWatcher />
-<div class="absolute bottom-0 right-0 m-2">
+<div class="fixed z-[100] bottom-0 right-0 m-2">
 	<Lightswitch />
 </div>
 

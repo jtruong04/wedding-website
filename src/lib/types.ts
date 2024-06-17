@@ -22,3 +22,26 @@ export type FAQ = {
     question: string;
     answer: string;
 }
+
+export type MediaItem = {
+	baseUrl: string;
+	filename: string;
+	description?: string;
+	id: string;
+	mediaMetadata: {
+		creationTime: string;
+		height: string;
+		width: string;
+	},
+	mimeType: string;
+	productUrl: string;
+	srcset?: string[];
+}
+
+export type ImageData = {
+    src: string,
+    original: string,
+    width: number,
+    height: number,
+    title?: string,
+}
