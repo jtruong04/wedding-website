@@ -10,11 +10,10 @@ import {
 import type { MediaItem } from '$lib/types';
 
 
-const tokenCache = new NodeCache({ stdTTL: 3500 });
-const imageCache = new NodeCache({ stdTTL: 3500 });
+const cache = new NodeCache({ stdTTL: 1800 });
 
 async function refreshAccessToken() {
-	let token = tokenCache.get('access_token');
+	let token = cache.get('access_token');
 	if (token === undefined) {
 		const response = await fetch(GOOGLE_PHOTOS_REFRESH_URL, {
 			method: 'POST',
@@ -30,21 +29,21 @@ async function refreshAccessToken() {
 		});
 		const data = await response.json();
 		token = data.access_token;
-		tokenCache.set('access_token', token);
+		cache.set('access_token', token);
 	}
 	return token;
 }
 
 export async function getAlbum() {
-    let images = imageCache.get('images') as MediaItem[] | undefined;
-    if (images === undefined) {
+    let images = cache.get('images') as MediaItem[] | undefined;
+    if (images === undefined || images.length === 0) {
         const params = new URLSearchParams({
             albumId: GOOGLE_PHOTOS_ALBUM_ID,
             pageSize: "100",
         });
         const token = await refreshAccessToken();
         let pageToken = null;
-        let images:MediaItem[] = [];
+        images = [];
         do {
             if (pageToken) {
                 params.set('pageToken', pageToken);
@@ -63,7 +62,7 @@ export async function getAlbum() {
             pageToken = data.nextPageToken;
             images = images.concat(data.mediaItems);
         } while (pageToken);
-        imageCache.set('images', images);
+        cache.set('images', images);
     }
     return images || [];
 }

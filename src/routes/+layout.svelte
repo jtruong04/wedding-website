@@ -28,7 +28,7 @@
 	{#snippet content({ toggleDrawer })}
 		<div class="navbar w-full ps-5">
 			<div class="flex-none md:hidden" class:text-white={$page.route.id === '/'}>
-				<button onclick={toggleDrawer}>
+				<button onclick={toggleDrawer} name='menu'>
 					<Menu />
 				</button>
 			</div>
