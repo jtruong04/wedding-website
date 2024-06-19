@@ -4,7 +4,7 @@ import type { Config } from "tailwindcss";
 const config: Config = {
 	mode: 'jit',
 	darkMode: ["class"],
-	content: ["./src/**/*.{html,js,svelte,ts}"],
+	content: ["./src/**/*.{html,js,svelte,ts}", './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'],
 	safelist: ["dark"],
 	theme: {
 		container: {
@@ -62,6 +62,7 @@ const config: Config = {
 	},
 	plugins: [
 		require('daisyui'),
+		require('flowbite/plugin'),
 	]
 };
 
