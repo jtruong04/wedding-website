@@ -6,7 +6,7 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 </script>
 
-<Button on:click={toggleMode} variant="outline" size="icon" class="opacity-25 hover:opacity-100">
+<Button on:click={toggleMode} variant="outline" size="icon" class="opacity-50 hover:opacity-100">
 	<Sun
 		class="absolute h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
 	/>

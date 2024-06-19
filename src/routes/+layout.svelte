@@ -14,7 +14,7 @@
 	const links: { name: string; href: string }[] = [
 		{ name: 'Gallery', href: '/gallery' },
 		// { name: 'Hotels', href: '/hotels' },
-		// { name: 'Registry', href: '/registry' },
+		{ name: 'Registry', href: '/registry' },
 		{ name: 'FAQs', href: '/faqs' }
 	];
 </script>
@@ -39,7 +39,7 @@
 				<NavMenu direction="horizontal" {links} />
 			</div>
 		</div>
-		<div class="prose mx-auto flex max-w-screen-lg flex-col items-center p-5">
+		<div class="prose mx-auto flex max-w-screen-xl flex-col items-center p-5">
 			{@render children()}
 		</div>
 	{/snippet}

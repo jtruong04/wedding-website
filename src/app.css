@@ -69,6 +69,10 @@
 	font-family: 'adelia';
 	src: url('/fonts/adelia.ttf') format('truetype');
 }
+@font-face {
+	font-family: 'acgyosyo';
+	src: url('/fonts/acgyosyo.ttf') format('truetype');
+}
 
 .script-font {
 	font-family: adelia;

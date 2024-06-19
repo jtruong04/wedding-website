@@ -68,17 +68,20 @@
 		position: relative;
 	}
 
-	.masonry-brick:nth-child(4n + 1) {
+	.masonry-brick:nth-child(5n + 1) {
 		width: 250px;
 	}
-	.masonry-brick:nth-child(4n + 2) {
+	.masonry-brick:nth-child(5n + 2) {
 		width: 325px;
 	}
-	.masonry-brick:nth-child(4n + 3) {
+	.masonry-brick:nth-child(5n + 3) {
 		width: 180px;
 	}
-	.masonry-brick:nth-child(4n + 4) {
+	.masonry-brick:nth-child(5n + 4) {
 		width: 380px;
+	}
+	.masonry-brick:nth-child(5n + 5) {
+		width: 220px;
 	}
 
 	img {
