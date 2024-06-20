@@ -79,7 +79,7 @@
 </script>
 
 <div class="flex flex-col gap-8 w-full">
-	<h1 class="script-font mb-5 text-2xl self-center">Hotels</h1>
+	<h1 class="script-font mb-5 text-3xl self-center">Hotels</h1>
 	<p class="self-center">{hotel_text}</p>
 
 	<div

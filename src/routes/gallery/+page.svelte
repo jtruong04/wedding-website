@@ -4,7 +4,7 @@
 	const { data } = $props();
 </script>
 
-<h1 class="script-font mb-5 text-2xl">Gallery</h1>
+<h1 class="script-font mb-5 text-3xl">Gallery</h1>
 <p>These are photos that we wanted to share with you all. This is the story of us.</p>
 <Gallery images={data.photos} />
 <p>

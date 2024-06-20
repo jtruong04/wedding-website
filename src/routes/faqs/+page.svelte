@@ -5,7 +5,7 @@
 	const { faqs } = data;
 </script>
 
-<h1 class="script-font text-2xl mb-3">Questions</h1>
+<h1 class="script-font text-3xl mb-3">Questions</h1>
 <Accordion.Root class="w-full md:w-3/4">
 	{#each faqs as { question, answer }}
 		<Accordion.Item value={question}>
