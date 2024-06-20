@@ -78,12 +78,12 @@
 	});
 </script>
 
-<div class="flex flex-col gap-8 w-full">
+<div class="flex flex-col gap-2 w-full">
 	<h1 class="script-font mb-5 text-3xl self-center">Hotels</h1>
-	<p class="self-center">{hotel_text}</p>
+	<p class="self-center text-lg">{hotel_text}</p>
 
 	<div
-		class="flex w-full snap-x snap-mandatory gap-4 overflow-x-auto scroll-auto md:justify-center md:gap-1"
+		class="flex w-full snap-x snap-mandatory gap-4 overflow-x-auto scroll-auto md:justify-center md:gap-1 my-4"
 	>
 		<div class="shrink-0 md:hidden">
 			<div class="w-4 shrink-0 sm:w-48"></div>
@@ -116,8 +116,8 @@
 							{hotel.rating} out of 5
 						</p>
 					</Rating>
-					<p>{hotel.formattedAddress}</p>
-					<p>{hotel.editorialSummary.text}</p>
+					<p class="text-sm">{hotel.formattedAddress}</p>
+					<p class="text-lg">{hotel.editorialSummary.text}</p>
 					<div class="card-actions justify-end">
 						<Button href={hotel.booking_url} class="btn btn-primary">Book Now</Button>
 					</div>
@@ -135,7 +135,7 @@
 <style>
 	@media (min-width: 768px) {
 		div.hotel-card:nth-child(even) {
-			scale: 0.9;
+			scale: 0.95;
 		}
 	}
 
