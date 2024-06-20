@@ -3,6 +3,9 @@ import { type Option } from '$lib/types';
 
 import { GOOGLE_MAPS_API_KEY } from '$env/static/private';
 import { findRow, getSheet } from '$lib/server/sheet';
+import NodeCache from 'node-cache';
+
+const cache = new NodeCache({ stdTTL: 1800 });
 
 type Text = {
 	text: string;
@@ -36,41 +39,50 @@ type Place = {
 };
 
 export const load = (async () => {
-	const sheet = await getSheet('Hotels');
-	const hotels = (await sheet.getRows<Hotel>()).map((row) => row.toObject());
+	let hotels:Hotel[]|undefined = cache.get('hotels');
+	if (hotels === undefined) {
+		const sheet = await getSheet('Hotels');
+		hotels = (await sheet.getRows<Hotel>()).map((row) => row.toObject()) as Hotel[];
+		cache.set('hotels', hotels);
+	}
 
-	const place_ids = [
-		'ChIJ2dnkz31z04kR3k1N_j_cTSs',
-		'ChIJyblYn3pz04kRGdZpL4CESr0',
-		'ChIJcWhuCHJz04kRX_YOZzNgHoo'
-	];
-
-	const details = await Promise.all(
-		place_ids.map((place_id) =>
-			fetch(
-				`https://places.googleapis.com/v1/places/${place_id}?` +
+	const place_details: Place[] = await Promise.all(
+		hotels.map(async (hotel) => {
+			const res = cache.get(hotel.place_id!);
+			if (res) return res as Place;
+			let response = await fetch(
+				`https://places.googleapis.com/v1/places/${hotel.place_id!}?` +
 					new URLSearchParams({
 						key: GOOGLE_MAPS_API_KEY,
 						fields:
 							'id,displayName,location,formattedAddress,googleMapsUri,priceLevel,rating,websiteUri,photos,editorialSummary,iconBackgroundColor,iconMaskBaseUri'
 					})
-			)
-		)
+			);
+			let data = await response.json();
+			cache.set(hotel.place_id!, data);
+			return data;
+		})
 	);
-	const place_details: Place[] = await Promise.all(details.map((detail) => detail.json()));
 
 	// Venue
-	const venue_id = (await findRow<Option>('Options', 'key', 'venue_id'))?.get('value');
-	const venue_details = await fetch(
-		`https://places.googleapis.com/v1/places/${venue_id}?` +
-			new URLSearchParams({
-				key: GOOGLE_MAPS_API_KEY,
-				fields:
-					'id,displayName,location,formattedAddress,googleMapsUri,priceLevel,rating,websiteUri,photos,editorialSummary,iconBackgroundColor,iconMaskBaseUri'
-			})
-	);
-
-	const venue_data = await venue_details.json();
+	let venue_id: string | undefined = cache.get('venue_id');
+	if (venue_id === undefined) {
+		venue_id = (await findRow<Option>('Options', 'key', 'venue_id'))?.get('value');
+		cache.set('venue_id', venue_id);
+	}
+	let venue_data: Place = cache.get(venue_id!) as Place;
+	if (venue_data === undefined) {
+		const venue_details = await fetch(
+			`https://places.googleapis.com/v1/places/${venue_id}?` +
+				new URLSearchParams({
+					key: GOOGLE_MAPS_API_KEY,
+					fields:
+						'id,displayName,location,formattedAddress,googleMapsUri,priceLevel,rating,websiteUri,photos,editorialSummary,iconBackgroundColor,iconMaskBaseUri'
+				})
+		);
+		venue_data = await venue_details.json();
+		cache.set(venue_id!, venue_data);
+	}
 
 	return {
 		hotels: place_details.map((place, i) => ({ ...place, ...hotels[i] })) as (Place & Hotel)[],
