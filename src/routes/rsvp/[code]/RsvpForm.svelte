@@ -7,10 +7,11 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import type { Guest } from '$lib/types';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
-	import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
+	import SuperDebug, { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Confirm from './Confirm.svelte';
 	import { schema, type Message } from './schema.js';
+	import UnderlineSelect from '$lib/components/UnderlineSelect.svelte';
 
 	const {
 		data,
@@ -70,10 +71,10 @@
 		{/if}
 		<p>Please fill out the form below to confirm your attendance.</p>
 	</div>
-	<form method="POST" use:enhance class="my-5 flex flex-col">
+	<form method="POST" use:enhance class="my-5 flex flex-col gap-1">
 		<Field {form} name="full_name">
 			<Control let:attrs>
-				<NotchedInput label="Full Name" {...attrs} bind:value={$formData.full_name} />
+				<NotchedInput autofocus label="Full Name" {...attrs} bind:value={$formData.full_name} />
 			</Control>
 			<Description class="sr-only">Full Name</Description>
 			<FieldErrors />
@@ -144,7 +145,7 @@
 		</div>
 		{#if $formData.is_coming === 'TRUE' && !guest_of}
 			{#if $formData.plus_one === 'TRUE'}
-				<Field {form} name="guest_name">
+				<Field {form} name="guest_name" class="mt-4">
 					<Control let:attrs>
 						<NotchedInput label="Guest's Name" {...attrs} bind:value={$formData.guest_name} />
 					</Control>
@@ -170,7 +171,7 @@
 				<FieldErrors />
 			</Field>
 		{/if}
-		<div class="flex items-center gap-2">
+		<div class="flex items-center gap-2 mt-2">
 			<Field {form} name="email_confirm">
 				<Control let:attrs>
 					<div class="flex items-center space-x-2">
@@ -205,4 +206,4 @@
 	</form>
 {/if}
 
-<!-- <SuperDebug data={$formData} /> -->
+<SuperDebug data={$formData} />

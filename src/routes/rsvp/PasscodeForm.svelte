@@ -46,6 +46,8 @@
 			>
 				{#each { length: PASSCODE_LENGTH } as _, i}
 					<PinInput.Input
+						autofocus={i === 0}
+						{...attrs}
 						class={'h-input rounded-input font-alt placeholder-shown:border-border-input focus-within:border-border-input-hover focus-within:shadow-date-field-focus hover:border-border-input-hover flex w-11 select-none rounded border bg-background px-2 py-3 text-center text-[24px] uppercase tracking-[0.01em] text-foreground ' +
 							($errors.passcode ? 'border-red-500' : 'border-foreground')}
 					/>
