@@ -7,10 +7,10 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 	import type { Guest } from '$lib/types';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
-	import SuperDebug, { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
+	import { superForm, type Infer, type SuperValidated } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { schema, type Message } from './schema.js';
 	import Confirm from './Confirm.svelte';
+	import { schema, type Message } from './schema.js';
 
 	const {
 		data,
@@ -70,7 +70,7 @@
 		{/if}
 		<p>Please fill out the form below to confirm your attendance.</p>
 	</div>
-	<form method="POST" use:enhance class="my-5 flex flex-col gap-3">
+	<form method="POST" use:enhance class="my-5 flex flex-col">
 		<Field {form} name="full_name">
 			<Control let:attrs>
 				<NotchedInput label="Full Name" {...attrs} bind:value={$formData.full_name} />
@@ -78,7 +78,7 @@
 			<Description class="sr-only">Full Name</Description>
 			<FieldErrors />
 		</Field>
-		<div class="flex whitespace-nowrap">
+		<div class="flex flex-wrap whitespace-nowrap">
 			<Field {form} name="is_coming" class="flex items-center">
 				<Control let:attrs>
 					<Label class="sr-only">Are you coming?</Label>
@@ -156,13 +156,14 @@
 		{#if $formData.is_coming === 'TRUE'}
 			<Field {form} name="notes">
 				<Control let:attrs>
-					<Description>
+					<Description class="mt-3">
 						Please let us know of any accommodations you may need during the reception in order to
 						have the best time.
 					</Description>
 					<Textarea
 						{...attrs}
 						bind:value={$formData.notes}
+						class="focus:border-current focus:ring-0"
 						placeholder="Dietary restrictions, accessibility requirements, etc."
 					/>
 				</Control>
