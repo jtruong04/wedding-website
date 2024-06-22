@@ -66,3 +66,32 @@ export async function getAlbum() {
     }
     return images || [];
 }
+
+export async function getPagedAlbum(pageToken: string|null = null, pageSize: number = 25) {
+    let images = cache.get('images_'+pageToken) as {mediaItems: MediaItem[], nextPageToken?:string} | undefined;
+    if (images === undefined ) {
+        const params = new URLSearchParams({
+            albumId: GOOGLE_PHOTOS_ALBUM_ID,
+            pageSize: pageSize.toString(),
+        });
+        if (pageToken) {
+            params.set('pageToken', pageToken);
+        }
+        const token = await refreshAccessToken();
+        const response = await fetch(
+            'https://photoslibrary.googleapis.com/v1/mediaItems:search?' + params,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+        images = await response.json();
+        cache.set('images_'+pageToken, images);
+    }
+    return images || {
+        mediaItems: [] as MediaItem[],
+    };
+}

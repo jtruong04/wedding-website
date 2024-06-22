@@ -42,7 +42,12 @@
 			data-caption={image.description}
 			data-media-id={image.id}
 		>
-			<img id={image.id} src={`${image.baseUrl}=w380`} alt={image.description || image.filename} loading="lazy" />
+			<img
+				id={image.id}
+				src={`${image.baseUrl}=w380`}
+				alt={image.description || image.filename}
+				loading="lazy"
+			/>
 		</a>
 	{/each}
 </div>
@@ -52,7 +57,6 @@
 		display: flex;
 		flex-flow: row wrap;
 		gap: 8px;
-		/* margin-left: -8px; Adjustment for the gutter */
 		width: 100%;
 	}
 
@@ -60,11 +64,8 @@
 		flex: auto;
 		height: 250px;
 		min-width: 150px;
-		/* margin: 0 8px 8px 0; Some gutter */
 		overflow: hidden;
 		border-radius: 5px;
-		/* margin: 0 0 8px 8px; */
-		/* background-color: #333; */
 		color: white;
 		position: relative;
 	}

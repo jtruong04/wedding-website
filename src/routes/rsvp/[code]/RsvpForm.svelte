@@ -11,7 +11,6 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import Confirm from './Confirm.svelte';
 	import { schema, type Message } from './schema.js';
-	import UnderlineSelect from '$lib/components/UnderlineSelect.svelte';
 
 	const {
 		data,
