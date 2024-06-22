@@ -83,19 +83,18 @@
 	<p class="self-center text-lg">{hotel_text}</p>
 
 	<div
-		class="flex w-full snap-x snap-mandatory gap-4 overflow-x-auto scroll-auto md:justify-center md:gap-1 my-4"
+		class="flex w-full snap-x snap-mandatory gap-0 overflow-x-auto scroll-auto md:justify-center md:gap-1 py-10"
 	>
 		<div class="shrink-0 md:hidden">
 			<div class="w-4 shrink-0 sm:w-48"></div>
 		</div>
 		{#each hotels as hotel}
 			<div
-				class="hotel-card card w-5/6 shrink-0 snap-center shadow-xl first:pl-8 last:pr-8 dark:bg-neutral-900 md:w-[30%]"
+				class="hotel-card card card-compact w-5/6 shrink-0 snap-center shadow-xl first:pl-8 last:pr-8 dark:bg-neutral-900 md:w-[30%]"
 			>
 				<Carousel
 					let:Indicators
-                    let:Controls
-					class="!h-96 md:!h-60"
+					class="!h-60"
 					duration={Math.random() * 7500 + 5000}
 					images={hotel.photos.map((photo) => {
 						return {
@@ -110,13 +109,13 @@
 				</Carousel>
 
 				<div class="card-body">
-					<h2 class="card-title">{hotel.name}</h2>
-					<Rating id="example-3" total={5} rating={hotel.rating} class="self-end">
+					<h2 class="card-title"><a href={hotel.websiteUri}>{hotel.name}</a></h2>
+					<Rating total={5} rating={hotel.rating} class="self-end">
 						<p slot="text" class="ms-2 text-sm font-medium text-gray-500 dark:text-gray-400">
 							{hotel.rating} out of 5
 						</p>
 					</Rating>
-					<p class="text-sm">{hotel.formattedAddress}</p>
+					<a href={hotel.googleMapsUri} class="text-sm">{hotel.formattedAddress}</a>
 					<p class="text-lg">{hotel.editorialSummary.text}</p>
 					<div class="card-actions justify-end">
 						<Button href={hotel.booking_url} class="btn btn-primary">Book Now</Button>
@@ -135,7 +134,7 @@
 <style>
 	@media (min-width: 768px) {
 		div.hotel-card:nth-child(even) {
-			scale: 0.95;
+			scale: 0.90;
 		}
 	}
 

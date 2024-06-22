@@ -14,7 +14,7 @@
 	];
 </script>
 
-<h1 class="script-font mb-5 text-6xl">日本への新婚旅行</h1>
+<h1 class="script-font mb-5 text-4xl md:text-6xl">日本への新婚旅行</h1>
 <div class="flex w-full flex-col gap-5">
 	<div class="w-full">
 		<Carousel {images} duration={5000} let:Controls>

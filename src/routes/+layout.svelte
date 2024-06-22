@@ -12,6 +12,7 @@
 	const { children } = $props();
 
 	const links: { name: string; href: string }[] = [
+		{ name: 'About Us', href: '/about' },
 		{ name: 'Gallery', href: '/gallery' },
 		{ name: 'Hotels', href: '/hotels' },
 		{ name: 'Registry', href: '/registry' },
@@ -41,7 +42,7 @@
 				<NavMenu direction="horizontal" {links} />
 			</div>
 		</div>
-		<div class="prose mx-auto flex max-w-screen-xl flex-col items-center py-5">
+		<div class="prose mx-auto flex max-w-screen-xl w-11/12 flex-col items-center py-5">
 			{@render children()}
 		</div>
 	{/snippet}

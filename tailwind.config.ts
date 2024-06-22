@@ -63,6 +63,7 @@ const config: Config = {
 	plugins: [
 		require('daisyui'),
 		require('flowbite/plugin'),
+		require('@tailwindcss/container-queries'),
 	]
 };
 

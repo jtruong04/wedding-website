@@ -40,8 +40,9 @@
 			data-width={image.mediaMetadata.width}
 			data-alt={image.description || image.filename}
 			data-caption={image.description}
+			data-media-id={image.id}
 		>
-			<img src={`${image.baseUrl}=w380`} alt={image.description || image.filename} loading="lazy" />
+			<img id={image.id} src={`${image.baseUrl}=w380`} alt={image.description || image.filename} loading="lazy" />
 		</a>
 	{/each}
 </div>
@@ -66,22 +67,6 @@
 		/* background-color: #333; */
 		color: white;
 		position: relative;
-	}
-
-	.masonry-brick:nth-child(5n + 1) {
-		width: 250px;
-	}
-	.masonry-brick:nth-child(5n + 2) {
-		width: 325px;
-	}
-	.masonry-brick:nth-child(5n + 3) {
-		width: 180px;
-	}
-	.masonry-brick:nth-child(5n + 4) {
-		width: 380px;
-	}
-	.masonry-brick:nth-child(5n + 5) {
-		width: 220px;
 	}
 
 	img {

@@ -17,8 +17,7 @@ export const load = (async () => {
 		options = {
 			tz: (await findRow<Option>(sheet, 'key', 'timezone'))?.get('value') || 'UTC',
 			date: (await findRow<Option>(sheet, 'key', 'date'))?.get('value') || '2025-01-01 12:00:00',
-			banner:
-				(await findRow<Option>(sheet, 'key', 'banner_photo'))?.get('value') || 'photos/banner.jpg'
+			banner: (await findRow<Option>(sheet, 'key', 'banner_photo'))?.get('value') || 'photos/banner.jpg'
 		};
 		cache.set('options', options);
 	}

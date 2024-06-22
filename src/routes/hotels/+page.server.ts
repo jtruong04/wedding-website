@@ -59,6 +59,7 @@ export const load = (async () => {
 					})
 			);
 			let data = await response.json();
+			data.photos = data.photos.slice(0, 5);
 			cache.set(hotel.place_id!, data);
 			return data;
 		})
