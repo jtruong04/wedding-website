@@ -67,11 +67,13 @@
 	let viewport: HTMLDivElement;
 
 	function handleScroll() {
-		if (
-			viewport.scrollHeight - viewport.scrollTop - viewport.clientHeight <= 750 &&
-			nextPageToken
-		) {
-			fetchMore();
+		if (window && viewport) {
+			if (
+				viewport.clientHeight + viewport.offsetTop - window.scrollY - window.innerHeight <= window.innerHeight &&
+				nextPageToken
+			) {
+				fetchMore();
+			}
 		}
 	}
 </script>
@@ -119,19 +121,6 @@
 </p>
 
 <style>
-	.viewport {
-		overflow-y: auto;
-		height: 70vh;
-		/* Hide scrollbar for Chrome, Safari and Opera */
-	}
-	.viewport::-webkit-scrollbar {
-		display: none;
-	}
-	/* Hide scrollbar for IE, Edge and Firefox */
-	.viewport {
-		-ms-overflow-style: none; /* IE and Edge */
-		scrollbar-width: none; /* Firefox */
-	}
 	.masonry {
 		display: flex;
 		flex-flow: row wrap;
