@@ -2,20 +2,20 @@ import { findRow, getSheet } from '$lib/server/sheet';
 import { redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { Guest } from '$lib/types';
-import type { Code } from 'lucide-svelte';
 import { fail, message, superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { schema, type Message } from './schema';
 import { createUniqueCode } from '$lib/random';
 import { sendEmailTemplate } from '$lib/server/email';
 import { MAILGUN_DOMAIN } from '$env/static/private';
+import { checkCode } from '$lib/server/codes';
 
 export const load = (async ({ params }) => {
 	const code = params.code.toLowerCase();
 
-	const globalCode = await findRow<Code>('Codes', 'code', code);
+	const isGlobalCode = checkCode(code);
 	const rsvpRow = await findRow<Guest>('Guests', 'id', code);
-	if (!globalCode && !rsvpRow) {
+	if (!isGlobalCode && !rsvpRow) {
 		return redirect(303, '/rsvp');
 	}
 

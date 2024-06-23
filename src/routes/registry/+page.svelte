@@ -23,7 +23,9 @@
 	</div>
 
 	<p class="text-lg">
-		{data.registry_text}
+		We're heading to Japan for our honeymoon! In deciding where to go, John said it best: "I want to
+		eat food and ride trains." Following that eloquent mantra, we are excited for this next
+		adventure! In lieu of gifts, we gratefully accept donations via the links below.
 	</p>
 
 	<div class="flex w-4/5 flex-col gap-4 self-center md:flex-row">

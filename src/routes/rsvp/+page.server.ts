@@ -5,7 +5,8 @@ import {schema} from './schema';
 import {fail, setError, superValidate} from 'sveltekit-superforms';
 import {zod} from 'sveltekit-superforms/adapters';
 import { findRow } from '$lib/server/sheet';
-import type { Code, Guest } from '$lib/types';
+import type { Guest } from '$lib/types';
+import { checkCode } from '$lib/server/codes';
 
 export const load = (async () => {
     return {
@@ -20,7 +21,7 @@ export const actions = {
             return fail(400, {form});
         }
         const code = form.data.passcode.join('').toLowerCase();
-        if (!(await findRow<Code>("Codes", "code", code)) && !(await findRow<Guest>("Guests", "id", code))) {
+        if (!(checkCode(code)) && !(await findRow<Guest>("Guests", "id", code))) {
             return setError(form, 'passcode._errors', "This code is not valid!", {
                 status: 404
             });

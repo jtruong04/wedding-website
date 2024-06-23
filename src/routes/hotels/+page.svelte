@@ -5,7 +5,7 @@
 	import { Carousel } from 'flowbite-svelte';
 
 	const { data } = $props();
-	const { hotels, venue_details, maps_key, hotel_text } = data;
+	const { hotels, venue_details, maps_key } = data;
 
 	// @ts-ignore
 	onMount(async () => {
@@ -39,9 +39,8 @@
 			mapId: 'f7499d4ca631cf48'
 		});
 
-        const glyphImg = document.createElement('img');
-        glyphImg.src = 'icons/gem.svg';
-
+		const glyphImg = document.createElement('img');
+		glyphImg.src = 'icons/gem.svg';
 
 		// @ts-ignore
 		const pinElement = new PinElement({
@@ -78,12 +77,17 @@
 	});
 </script>
 
-<div class="flex flex-col gap-2 w-full">
-	<h1 class="script-font mb-5 text-3xl self-center">Hotels</h1>
-	<p class="self-center text-lg">{hotel_text}</p>
+<div class="flex w-full flex-col gap-2">
+	<h1 class="script-font mb-5 self-center text-3xl">Hotels</h1>
+	<p class="self-center text-lg">
+		We have not reserved a block of rooms, but we do recommend these three hotels near the venue.
+		These hotels are all less than a 10-minute drive from the airport, and are in walking distance
+		to the venue. These hotels are located on a village Main Street with walkable access to
+		restaurants, bars, shops, and parks.
+	</p>
 
 	<div
-		class="flex w-full snap-x snap-mandatory gap-0 overflow-x-auto scroll-auto md:justify-center md:gap-1 py-10"
+		class="flex w-full snap-x snap-mandatory gap-0 overflow-x-auto scroll-auto py-10 md:justify-center md:gap-1"
 	>
 		<div class="shrink-0 md:hidden">
 			<div class="w-4 shrink-0 sm:w-48"></div>
@@ -100,11 +104,11 @@
 						return {
 							src: `https://places.googleapis.com/v1/${photo?.name}/media?&maxHeightPx=400&key=${maps_key}`,
 							alt: hotel.displayName.text,
-                            loading: "lazy"
+							loading: 'lazy'
 						};
 					})}
 				>
-                    <!-- <Controls />    -->
+					<!-- <Controls />    -->
 					<Indicators />
 				</Carousel>
 
@@ -128,13 +132,13 @@
 		</div>
 	</div>
 
-	<div id="map" class="w-full md:w-4/5 self-center"></div>
+	<div id="map" class="w-full self-center md:w-4/5"></div>
 </div>
 
 <style>
 	@media (min-width: 768px) {
 		div.hotel-card:nth-child(even) {
-			scale: 0.90;
+			scale: 0.9;
 		}
 	}
 
