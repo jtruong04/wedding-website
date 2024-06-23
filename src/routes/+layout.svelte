@@ -12,7 +12,7 @@
 	const { children } = $props();
 
 	const links: { name: string; href: string }[] = [
-		{ name: 'About Us', href: '/about' },
+		// { name: 'About Us', href: '/about' },
 		{ name: 'Gallery', href: '/gallery' },
 		{ name: 'Hotels', href: '/hotels' },
 		{ name: 'Registry', href: '/registry' },
