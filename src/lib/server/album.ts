@@ -10,7 +10,7 @@ import {
 import type { MediaItem } from '$lib/types';
 
 
-const cache = new NodeCache({ stdTTL: 900 });
+const cache = new NodeCache({ stdTTL: 1800 });
 
 async function refreshAccessToken() {
 	let token = cache.get('access_token');
