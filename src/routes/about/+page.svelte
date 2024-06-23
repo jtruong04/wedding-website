@@ -46,7 +46,7 @@
 			<h2
 				class="card-title mt-[-0.75rem] flex flex-col items-center justify-center text-lg font-normal italic"
 			>
-				{person.title}
+				{person.title || "\xa0"}
 			</h2>
 			<p class="text-lg">{person.fun_fact}</p>
 			<div class="text-md text-center align-text-bottom italic text-gray-500 dark:text-gray-400">
