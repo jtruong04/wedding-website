@@ -123,6 +123,8 @@ export const actions = {
 				{
 					rsvp: mainRsvpObj,
 					guest: guestRsvpObj,
+					rsvp_id_uppercase: mainRsvpObj.id.toUpperCase(),
+					guest_id_uppercase: guestRsvpObj?.id.toUpperCase(),
 					full_name: rsvp.get('fullName'),
 					code: rsvp.get('id')
 				}
@@ -130,7 +132,7 @@ export const actions = {
 		}
 		return message(form, {
 			rsvp: mainRsvpObj,
-			guest: guestRsvpObj,
+			guest: rsvp?.get('isComing') === 'TRUE' ? guestRsvpObj : undefined,
 		} as Message)
 	}
 };
