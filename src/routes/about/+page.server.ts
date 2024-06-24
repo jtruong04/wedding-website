@@ -17,7 +17,7 @@ export const load = (async () => {
 		.map((person) => person.toObject()).map((person) => ({
 			...person,
 			level: parseInt(person.level as unknown as string),
-			photo: `https://picsum.photos/870/536?random=${Math.floor(Math.random() * 1000)}`,
+			photo: person.photo || `https://picsum.photos/870/536?random=${Math.floor(Math.random() * 1000)}`,
 			fun_fact: person.fun_fact || loremIpsum({units: 'sentence', count: 2}),
 			quote: person.quote || loremIpsum()
 		}));

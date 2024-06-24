@@ -48,7 +48,7 @@
 			>
 				{person.title || "\xa0"}
 			</h2>
-			<p class="text-lg">{person.fun_fact}</p>
+			<p class="text-lg">{@html person.fun_fact}</p>
 			<div class="text-md text-center align-text-bottom italic text-gray-500 dark:text-gray-400">
 				{person.quote}
 			</div>
