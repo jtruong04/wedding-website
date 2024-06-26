@@ -79,7 +79,7 @@
 			<FieldErrors />
 		</Field>
 		<div class="flex flex-wrap whitespace-nowrap">
-			<Field {form} name="is_coming" class="flex items-center">
+			<Field {form} name="is_coming" class="flex flex-wrap items-center">
 				<Control let:attrs>
 					<Label class="sr-only">Are you coming?</Label>
 					<span>I &nbsp;</span>
@@ -112,7 +112,7 @@
 				<FieldErrors />
 			</Field>
 			{#if $formData.is_coming === 'TRUE' && !guest_of}
-				<Field {form} name="plus_one" class="flex items-center">
+				<Field {form} name="plus_one" class="flex flex-wrap items-center">
 					<Control let:attrs>
 						<Label class="sr-only">Are you bringing someone?</Label>
 						<span>&nbsp;and I&nbsp;</span>
@@ -170,7 +170,7 @@
 				<FieldErrors />
 			</Field>
 		{/if}
-		<div class="flex items-center gap-2 mt-2">
+		<div class="flex flex-col md:flex-row items-start md:items-center gap-2 mt-2">
 			<Field {form} name="email_confirm">
 				<Control let:attrs>
 					<div class="flex items-center space-x-2">

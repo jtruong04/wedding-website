@@ -87,7 +87,7 @@
 	</p>
 
 	<div
-		class="flex w-full snap-x snap-mandatory gap-0 overflow-x-auto scroll-auto py-10 md:justify-center md:gap-1"
+		class="flex w-full snap-x snap-mandatory gap-4 md:gap-0 overflow-x-auto scroll-auto py-10 md:justify-center md:gap-1"
 	>
 		<div class="shrink-0 md:hidden">
 			<div class="w-4 shrink-0 sm:w-48"></div>
