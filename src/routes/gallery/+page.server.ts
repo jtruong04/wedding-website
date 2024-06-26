@@ -1,10 +1,6 @@
 import type { PageServerLoad } from '../$types';
-
 import {getPagedAlbum} from '$lib/server/album';
-import type { MediaItem } from '$lib/types';
 
-
-// async function getData():Promise<MediaItem[]> {
 
 export const load = (async () => {
     const photos = await getPagedAlbum(null);

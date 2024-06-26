@@ -69,7 +69,7 @@
 	function handleScroll() {
 		if (window && viewport) {
 			if (
-				viewport.clientHeight + viewport.offsetTop - window.scrollY - window.innerHeight <= window.innerHeight &&
+				viewport.clientHeight + viewport.offsetTop - window.scrollY - window.innerHeight <= window.innerHeight*1.5 &&
 				nextPageToken
 			) {
 				fetchMore();
