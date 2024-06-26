@@ -4,26 +4,6 @@
 	const { data } = $props();
 	const { groom_people, bride_people } = data;
 
-	// import type { BiggerPictureInstance } from 'bigger-picture';
-	// import { onMount } from 'svelte';
-	// import { loadBp } from '$lib/load-bp';
-
-	// let bp: BiggerPictureInstance;
-
-	// /** click handler */
-	// function openBiggerPicture(e: Event) {
-	//     e.preventDefault();
-	//     const target = e.currentTarget as HTMLAnchorElement;
-	//     bp.open({
-	//         items: document.querySelectorAll('.masonry a'),
-	//         el: target
-	//     });
-	// }
-
-	// onMount(async () => {
-	//     // use onMount to define variable so it runs only in the browser
-	//     bp = await loadBp();
-	// });
 </script>
 
 {#snippet Card(person)}
